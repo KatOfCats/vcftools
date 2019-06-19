@@ -10,7 +10,7 @@ IncludeCmd: yes
     SHELL=/bin/bash
 
     # Add paths
-    PATH="/usr/local/vcf-tools/bin:$PATH"
+    PATH="/usr/local/vcftools/bin:$PATH"
 
     # Export paths
     export PATH
@@ -28,8 +28,13 @@ IncludeCmd: yes
 # run OS updates
 apt-get update -y  && apt-get upgrade -y
 
-# Install vcf-tools
-
+# Install vcftools
+git clone https://github.com/vcftools/vcftools.git
+cd vcftools
+./autogen.sh
+./configure
+make
+make install
 
 %labels
  edited from HPC UEA Team  hpc.admin@uea.ac.uk
